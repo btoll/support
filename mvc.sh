@@ -16,8 +16,6 @@ else
         echo "Warning: Directory already exists, exiting..."
         exit 1
     else
-        #HTML="<html>\n<head>\n<title>$1 MVC</title>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"$SDK/$2/resources/css/ext-all.css\" />\n<script type=\"text/javascript\" src=\"$SDK/$2/ext-debug.js\"></script>\n<script type=\"text/javascript\" src=\"app.js\"></script>\n</head>\n\n<body>\n</body>\n</html>"
-
         # create the dirs and the Viewport.js script
 	mkdir -m 0755 -p $1/data $1/app/controller $1/app/model $1/app/store $1/app/view
 	touch $1/app/view/Viewport.js
