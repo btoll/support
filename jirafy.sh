@@ -13,7 +13,7 @@ else
         echo "Warning: File already exists, exiting..."
         exit 1
     else
-        read -p "Location of SDK: [$DEFAULT_TICKETS_DIR] " SDK
+        read -p "Location of tickets directory: [$DEFAULT_TICKETS_DIR] " SDK
         TICKETS_DIR=${TICKETS_DIR:-$DEFAULT_TICKETS_DIR}
 
         read -p "Enter relative path to file: " FILE
@@ -35,11 +35,22 @@ else
             }" template.html > $1.html
 
         # if the file is an HTML/PHP/other document then get all the text between the <script> tags
-        # NOTE that this doesn't match sourced script tags, i.e., <script src="my_js.js"></script>
-        # the intent is to only get inline JavaScript
-        # TODO: currently it only copies the contents of the first <script> tag it meets
+	# 1. delete any lines that contain <script> tags with a src attribute
+	# 2. collect all lines (inclusive) between remaining <script> tags (they will be concatenated)
+	# 3. delete any remaining line(s) with an opening script tag
+	# 4. delete any remaining line(s) with a closing script tag
+	# 5. print whatever is remaining in the pattern space
+	# NOTE that if the text is on the same line as the opening <script> tag that it will be 
+	# deleted, i.e., "<script>var x = 5;</script>" will be deleted
         else
-            sed -e '1,/<script>/d' -e '/<\/script>/,$d' < ${TICKETS_DIR}$FILE > tmp
+	    sed -n '{
+	        /<script.*src=.*><\/script>/d
+	        /<script[^>]*>/,/<\/script>/!d
+	        /<script[^>]*>/d
+	        /<\/script>/d
+	        p
+	    }' <${TICKETS_DIR}$FILE >tmp
+
             sed '/your test case goes here/ {
                 r tmp
                 d

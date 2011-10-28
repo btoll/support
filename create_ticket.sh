@@ -6,7 +6,8 @@ DEFAULT_SDK_LOCATION=${EXT_SDK:-"/usr/local/www/extjs/builds"}
 VER=$2
 # extract the first character of the Ext version
 MACRO=${VER:0:1}
-DEBUG_SCRIPT="ext-all-debug-w-comments.js"
+#DEBUG_SCRIPT="ext-all-debug-w-comments.js"
+DEBUG_SCRIPT="ext-all-debug.js"
 
 if [ $# -ne $EXPECTED_ARGS ]; then
     echo "Usage: $0 <dir_name> <ext_version>"

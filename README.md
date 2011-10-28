@@ -46,13 +46,11 @@ It will ask for:
 
 This does the following:
 
-- if the specified file is an HTML document, uses `sed` to read the file and copy the JavaScript code between the first `<script>` tag it encounters in the document.  This is then replaces the line '//your test case goes here' in `template.html` and creates your new file (in this example, `4651.html`) by redirecting STDOUT.
+- if the specified file is an HTML document, uses `sed` to read the file and copy the JavaScript code between the any `<script>` tags it encounters in the document.  This then replaces the line '//your test case goes here' in `template.html` and creates your new file (in this example, `4651.html`) by redirecting STDOUT.
 - if the specified file is a JavaScript script, uses `sed` to read the entire file which then replaces the line '//your test case goes here' in `template.html` and creates your new file (in this example, `4651.html`) by redirecting STDOUT.
 
 TODO:
 
-- it only reads the first `<script>` tag it encounters.  Also, note that it only matches `<script>` with no attributes.
-- my sed-fu isn't strong, so this may not be the most efficient way to do this.
 - only handles ExtJS.
 
 ### Create ticket bash script
@@ -70,7 +68,7 @@ It will ask for:
 This does the following:
 
 - makes the directory in which the new ticket will live (in this example, `5671`).
-- creates an `index.html` document which properly references the JavaScript and CSS resources it needs to load.
+- creates an `index.html` document within the new directory which properly references the JavaScript and CSS resources it needs to load.
 
 The script properly handles versions 2.x, 3.x and 4.x.
 
