@@ -46,7 +46,7 @@ It will ask for:
 
 This does the following:
 
-- if the specified file is an HTML document, uses `sed` to read the file and copy the JavaScript code between the any `<script>` tags it encounters in the document.  This then replaces the line '//your test case goes here' in `template.html` and creates your new file (in this example, `4651.html`) by redirecting STDOUT.
+- if the specified file is an HTML document, uses `sed` to read the file and copy the JavaScript code between any `<script>` tags it encounters in the document.  This then replaces the line '//your test case goes here' in `template.html` and creates your new file (in this example, `4651.html`) by redirecting STDOUT.
 - if the specified file is a JavaScript script, uses `sed` to read the entire file which then replaces the line '//your test case goes here' in `template.html` and creates your new file (in this example, `4651.html`) by redirecting STDOUT.
 
 TODO:

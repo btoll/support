@@ -32,29 +32,28 @@ else
             sed "/your test case goes here/ {
                 r ${TICKETS_DIR}$FILE
                 d
-            }" template.html > $1.html
+            }" <template.html >$1.html
 
         # if the file is an HTML/PHP/other document then get all the text between the <script> tags
-	# 1. delete any lines that contain <script> tags with a src attribute
-	# 2. collect all lines (inclusive) between remaining <script> tags (they will be concatenated)
-	# 3. delete any remaining line(s) with an opening script tag
-	# 4. delete any remaining line(s) with a closing script tag
-	# 5. print whatever is remaining in the pattern space
 	# NOTE that if the text is on the same line as the opening <script> tag that it will be 
-	# deleted, i.e., "<script>var x = 5;</script>" will be deleted
+	# ignored, i.e., <script>var x = 5;</script>
         else
-	    sed -n '{
-	        /<script.*src=.*><\/script>/d
-	        /<script[^>]*>/,/<\/script>/!d
-	        /<script[^>]*>/d
-	        /<\/script>/d
-	        p
-	    }' <${TICKETS_DIR}$FILE >tmp
+	    sed -n '
+	        # delete any lines that contain script tags with a src attribute
+	        /<script.* src=/d
+
+	        /<script[^>]*>/,/<\/script>/ {
+	            # proceed if the current line does not contain an opening or closing <script> tag
+		    /^<\/*script/ !{
+		        p
+		    }
+		}
+	    ' <${TICKETS_DIR}$FILE >tmp
 
             sed '/your test case goes here/ {
                 r tmp
                 d
-            }' template.html > $1.html
+            }' <template.html >$1.html
             rm tmp
         fi
 
