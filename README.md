@@ -8,9 +8,9 @@ For example:
 ### Setup aliases
 For example:
 
-    alias mvc="/usr/local/www/support/mvc.sh "
-    alias jirafy="/usr/local/www/support/jirafy.sh "
-    alias create_ticket="/usr/local/www/support/create_ticket.sh "
+    alias mvc="/usr/local/www/support/mvc.sh"
+    alias jirafy="/usr/local/www/support/jirafy.sh"
+    alias create_ticket="/usr/local/www/support/create_ticket.sh"
 
 ----------------------------------------------------------------------------------------
 

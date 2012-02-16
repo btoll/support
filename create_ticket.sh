@@ -7,7 +7,7 @@ VER=$2
 # extract the first character of the Ext version
 MACRO=${VER:0:1}
 #DEBUG_SCRIPT="ext-all-debug-w-comments.js"
-DEBUG_SCRIPT="ext-all-debug.js"
+DEBUG_SCRIPT="ext-debug.js"
 
 if [ $# -ne $EXPECTED_ARGS ]; then
     echo "Usage: $0 <dir_name> <ext_version>"
@@ -21,7 +21,9 @@ else
 	mkdir -m 0755 -p $1
 
         # link to the SDK
-        read -p "Location of SDK: [$DEFAULT_SDK_LOCATION] " SDK
+
+	#uncomment the following line if you have multiple SDK locations
+        #read -p "Location of SDK: [$DEFAULT_SDK_LOCATION] " SDK
         SDK=${SDK:-$DEFAULT_SDK_LOCATION}
 
         ADAPTER="<script type=\"text/javascript\" src=\"$SDK/$VER/adapter/ext/ext-base.js\"></script>\n"
@@ -42,7 +44,8 @@ else
         # echo HTML honoring the new lines (-e flag)
         echo -e $HTML > $1/index.html
 
-        echo ""
+        #uncomment the statement below if you have multiple SDK locations
+        #echo ""
 	echo "Created new ticket in directory $1."
         echo "Linked to SDK location at $SDK."
         exit 0
