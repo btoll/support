@@ -44,10 +44,10 @@ else
 
 	        /<script[^>]*>/,/<\/script>/ {
 	            # proceed if the current line does not contain an opening or closing <script> tag
-		    /^<\/*script/ !{
-		        p
+                /^<\/*script/ !{
+                    p
+                }
 		    }
-		}
 	    ' <${TICKETS_DIR}$FILE >tmp
 
             sed '/your test case goes here/ {
