@@ -39,11 +39,12 @@ else
                 ;;
         esac
 
-        if [ $MACRO -lt 4 ]; then
-            ONREADY="Ext.onReady(function () {\n});"
-        else
-            ONREADY="Ext.application({\n\tname: 'TEST',\n\n\tlaunch: function () {\n\t}\n});"
-        fi
+        ONREADY="Ext.onReady(function () {\n});"
+#        if [ $MACRO -lt 4 ]; then
+#            ONREADY="Ext.onReady(function () {\n});"
+#        else
+#            ONREADY="Ext.application({\n\tname: 'TEST',\n\n\tlaunch: function () {\n\t}\n});"
+#        fi
 
         HTML="<html>\n<head>\n<title>$1</title>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"$SDK/$VER/resources/css/ext-all.css\" />\n$ADAPTER<script type=\"text/javascript\" src=\"$SDK/$VER/$DEBUG_SCRIPT\"></script>\n<script type=\"text/javascript\">\n$ONREADY\n</script>\n</head>\n\n<body>\n</body>\n</html>"
 

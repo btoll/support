@@ -44,7 +44,7 @@ else
 
 	        /<script[^>]*>/,/<\/script>/ {
 	            # proceed if the current line does not contain an opening or closing <script> tag
-                /^<\/*script/ !{
+                /<\/*script/ !{ # matches both opening and closing <script> tags
                     p
                 }
 		    }
