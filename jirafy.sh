@@ -2,7 +2,7 @@
 
 EXPECTED_ARGS=1
 # get preset environment variable or set a default location
-DEFAULT_TICKETS_DIR=${EXT_TICKETS_DIR-"/usr/local/www/extjs/tickets/"}
+DEFAULT_TICKETS_DIR=${TICKETS_DIR-"/usr/local/www/extjs/tickets/"}
 DEBUG_SCRIPT="ext-all-debug-w-comments.js"
 
 if [ $# -ne $EXPECTED_ARGS ]; then
@@ -14,7 +14,7 @@ else
         exit 1
     else
         read -p "Location of tickets directory: [$DEFAULT_TICKETS_DIR] " SDK
-        TICKETS_DIR=${TICKETS_DIR:-$DEFAULT_TICKETS_DIR}
+        TICKETS_DIR=${SDK:-$DEFAULT_TICKETS_DIR}
 
         read -p "Enter relative path to file: " FILE
 

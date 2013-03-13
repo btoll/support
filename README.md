@@ -3,7 +3,7 @@ Define some environment variables that the bash scripts will use.
 For example:
 
     export EXT_SDK=/usr/local/www/extjs/builds
-    export EXT_TICKETS_DIR=/usr/local/www/extjs/tickets/
+    export TICKETS_DIR=/usr/local/www/extjs/tickets/
 
 ### Setup aliases
 For example:
