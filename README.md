@@ -1,10 +1,10 @@
 ### Environment variables
 Define some environment variables that the bash scripts will use.
-For example:
+For example (note there are no trailing forward slashes for the directory locations):
 
-    export EXT_SDK=../../../SDK/
-    export EXT_BUILDS=../../builds/
-    export TICKETS_DIR=../../tickets/
+    export EXT_SDK=../../../SDK
+    export EXT_BUILDS=../../builds
+    export TICKETS_DIR=../../tickets
 
 ### Setup aliases
 For example:
@@ -50,9 +50,7 @@ This does the following:
 - if the specified file is an HTML document, uses `sed` to read the file and copy the JavaScript code between any `<script>` tags it encounters in the document.  This then replaces the line '//your test case goes here' in `template.html` and creates your new file (in this example, `4651.html`) by redirecting STDOUT.
 - if the specified file is a JavaScript script, uses `sed` to read the entire file which then replaces the line '//your test case goes here' in `template.html` and creates your new file (in this example, `4651.html`) by redirecting STDOUT.
 
-TODO:
-
-- only handles ExtJS.
+Note: Only handles ExtJS.
 
 ### Create ticket bash script
 Example usage:
@@ -63,11 +61,9 @@ Example usage:
 
     create_ticket ticket_dir_name ext_version
 
-Run the script in your tickets directory.
+Run the script wherever your ticket directories are located.
 
-It will ask for:
-
-- the location of the SDK (taken from environment variable or hard-coded default in the bash script).  Hit enter to select the preset path.
+It will ask for the location of your SDK or build directory if the proper environment variables have not been set ($EXT_SDK and $EXT_BUILDS). If prompted for a location, hit enter to accept the default path (preset in the script).
 
 This does the following:
 
@@ -76,6 +72,4 @@ This does the following:
 
 The script properly handles versions 2.x, 3.x, 4.x and the SDK.
 
-TODO:
-
- - only handles ExtJS.
+Note: Only handles ExtJS.
