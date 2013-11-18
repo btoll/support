@@ -2,7 +2,8 @@
 Define some environment variables that the bash scripts will use.
 For example:
 
-    export EXT_SDK=/usr/local/www/extjs/builds
+    export EXT_SDK=/usr/local/www/SDK/
+    export EXT_BUILDS=/usr/local/www/extjs/builds/
     export TICKETS_DIR=/usr/local/www/extjs/tickets/
 
 ### Setup aliases
@@ -57,7 +58,10 @@ TODO:
 Example usage:
     `create_ticket 5671 3.4.0`
 
-    create_ticket dir_name ext_version
+Example usage:
+    `create_ticket EXTJSIV-11987 SDK`
+
+    create_ticket ticket_dir_name ext_version
 
 Run the script in your tickets directory.
 
@@ -70,7 +74,7 @@ This does the following:
 - makes the directory in which the new ticket will live (in this example, `5671`).
 - creates an `index.html` document within the new directory which properly references the JavaScript and CSS resources it needs to load.
 
-The script properly handles versions 2.x, 3.x and 4.x.
+The script properly handles versions 2.x, 3.x, 4.x and the SDK.
 
 TODO:
 
