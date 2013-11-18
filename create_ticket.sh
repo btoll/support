@@ -2,14 +2,14 @@
 
 EXPECTED_ARGS=2
 # get preset environment variable or set a default location (logical OR ----> ":-")
-DEFAULT_BUILDS_LOCATION=${EXT_BUILDS:-"/usr/local/www/extjs/builds/"}
+DEFAULT_BUILDS_LOCATION=${EXT_BUILDS:-"../../builds/"}
 VER=$2
 
 if [ "SDK" = $VER ]; then
     VER="extjs"
     DEBUG_SCRIPT="ext.js"
     # link to the SDK
-    SDK=${EXT_SDK:-"/usr/local/www/SDK/"}
+    SDK=${EXT_SDK:-"../../../SDK/"}
 else
     # extract the first character of the Ext version
     MACRO_VER=${VER:0:1}
@@ -39,7 +39,7 @@ else
         exit 1
     else
         # create the new ticket dir
-	    mkdir -m 0755 -p $1
+        mkdir -m 0755 -p $1
 
         ONREADY="Ext.onReady(function () {\n});"
 #        if [ $MACRO_VER -lt 4 ]; then
@@ -55,7 +55,7 @@ else
 
         #uncomment the statement below if you have multiple SDK locations
         #echo ""
-	    echo "Created new ticket in directory $1."
+        echo "Created new ticket in directory $1."
         echo "Linked to SDK location at $SDK."
         exit 0
     fi

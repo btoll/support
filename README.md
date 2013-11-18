@@ -2,9 +2,9 @@
 Define some environment variables that the bash scripts will use.
 For example:
 
-    export EXT_SDK=/usr/local/www/SDK/
-    export EXT_BUILDS=/usr/local/www/extjs/builds/
-    export TICKETS_DIR=/usr/local/www/extjs/tickets/
+    export EXT_SDK=../../../SDK/
+    export EXT_BUILDS=../../builds/
+    export TICKETS_DIR=../../tickets/
 
 ### Setup aliases
 For example:
