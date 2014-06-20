@@ -2,7 +2,7 @@
 Define some environment variables that the bash scripts will use.
 For example (note there are no trailing forward slashes for the directory locations):
 
-    export EXT_SDK=../../../SDK
+    export EXT_SDK=../../..
     export EXT_BUILDS=../../builds
     export TICKETS_DIR=../../tickets
 
@@ -50,14 +50,12 @@ This does the following:
 - if the specified file is an HTML document, uses `sed` to read the file and copy the JavaScript code between any `<script>` tags it encounters in the document.  This then replaces the line '//your test case goes here' in `template.html` and creates your new file (in this example, `4651.html`) by redirecting STDOUT.
 - if the specified file is a JavaScript script, uses `sed` to read the entire file which then replaces the line '//your test case goes here' in `template.html` and creates your new file (in this example, `4651.html`) by redirecting STDOUT.
 
-Note: Only handles ExtJS.
-
 ### Create ticket bash script
 Example usage:
     `create_ticket 5671 3.4.0`
 
 Example usage:
-    `create_ticket EXTJSIV-11987 SDK`
+    `create_ticket EXTJSIV-11987 SDK4`
 
     create_ticket ticket_dir_name ext_version
 
@@ -70,6 +68,4 @@ This does the following:
 - makes the directory in which the new ticket will live (in this example, `5671`).
 - creates an `index.html` document within the new directory which properly references the JavaScript and CSS resources it needs to load.
 
-The script properly handles versions 2.x, 3.x, 4.x and the SDK.
-
-Note: Only handles ExtJS.
+The script properly handles versions 2.x, 3.x, 4.x, 5.x and any git repos that follow the naming convention of SDK*, i.e., SDK5.
